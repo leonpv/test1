@@ -1,0 +1,9 @@
+ $userObject = $con->query("Select * from users where login='{$_POST['Username']}'");
+    if ($userObject->num_rows > 0) {
+        $hash=hash($_POST['password'],"md5");
+        $result = $con->query("Insert into lots (first_name,	last_name,	email,	username,	status,	phone,	comment,	floor, password) 
+        VALUES ('{$_POST['first_name']}','{$_POST['last_name']}','{$_POST['email']}','{$_POST['username']}','{$_POST['status']}','{$_POST['phone']}', '{$_POST['comment']}','{$_POST['phone']}')");
+
+    } else {
+       echo "Ћогин уже есть";
+    }
